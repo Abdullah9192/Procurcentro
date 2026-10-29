@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package services;
+
+service NotificationService {
+  rpc SendNotification (NotificationRequest) returns (NotificationResponse);
+  rpc GetNotifications (NotificationQuery) returns (NotificationList);
+}
+
+message NotificationRequest {
+  string sender_id = 1;
+  string receiver_id = 2;
+  string organization_id = 3;
+  string notification_type = 4;
+  string notification_module = 5;
+  string message = 6;
+  string subsidiary_id = 7;
+}
+
+message NotificationResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message NotificationQuery {
+  string receiver_id = 1;
+}
+
+message NotificationList {
+  repeated NotificationData notifications = 1;
+}
+
+message NotificationData {
+  string id = 1;
+  string sender_id = 2;
+  string receiver_id = 3;
+  string organization_id = 4;
+  string notification_type = 5;
+  string notification_module = 6;
+  string message = 7;
+  string subsidiary_id = 8;
+  bool is_read = 9;
+  string created_at = 10;
+}

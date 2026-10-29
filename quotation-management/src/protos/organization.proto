@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package admin;
+
+service OrganizationService {
+  rpc GetOrganizationById (OrganizationRequest) returns (OrganizationResponse);
+}
+
+message OrganizationRequest {
+  string id = 1;
+}
+
+message OrganizationResponse {
+  string id = 1;
+  string name = 2;
+  string address = 3;
+  string phone_number = 4;
+  string contact_name = 5;
+}

@@ -1,0 +1,54 @@
+# Node.js dependencies and build output
+node_modules/
+dist/
+
+# All .env files recursively
+.env
+*.env
+**/.env
+.env.development
+.env.production
+
+# Ignore .env specifically from known services (redundant with **/.env, but OK to keep if explicit)
+admin-management/.env
+vendor-management/.env
+employee-management/.env
+notification-management/.env
+budget-management/.env
+
+# Logs
+*.log
+
+# IDEs & OS generated files
+.idea/
+.DS_Store
+Thumbs.db
+
+# Python cache
+*.py[cod]
+
+# Java files
+*.class
+*.jar
+target/
+
+# Test reports
+TEST*.xml
+
+# Executables / apps
+*.app
+*.exe
+*.war
+
+# Large media
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+# Ignore docker-compose files at the root
+/docker-compose.yml
+/docker-compose.*.yml
+

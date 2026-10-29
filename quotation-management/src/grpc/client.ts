@@ -1,0 +1,26 @@
+
+import {
+  getOrganizationById,
+  getSubsidiaryById,
+  getBranchById,
+  getDepartmentById,
+  getUserById,
+  getOrgCategoryById,
+  getWorkflowById,
+  getOrgCurrencyById,
+  getApprovalWorkFlowById
+} from "./clients/AdminGrpcClient";
+import { getSupplierById } from "./clients/SupplierGrpcClient";
+
+export const grpcClients = {
+  getOrganizationById,
+  getSubsidiaryById,
+  getBranchById,
+  getDepartmentById,
+  getUserById,
+  getOrgCategoryById,
+  getWorkflowById,
+  getOrgCurrencyById,
+  getApprovalWorkFlowById,
+  getSupplierById
+};

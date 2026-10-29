@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package requisition;
+
+// =================== Services ===================
+service RequisitionService {
+  rpc GetRequisitionById(GetByIdRequest) returns (RequisitionResponse);
+}
+
+
+// ========== Common Request ==========
+message GetByIdRequest {
+  string id = 1;
+}
+
+
+message RequisitionResponse {
+  string id = 1;
+  string request_id = 2;
+  string organization_id = 3;
+  string title = 4;
+  string receiving_location = 5;
+  string created_by = 6;
+  string requisition_date = 7;
+  string status = 8;
+  double total_request_amount = 9;
+}

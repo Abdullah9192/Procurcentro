@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package budget;
+
+// =================== Services ===================
+service BudgetService {
+  rpc GetBudgetById(GetByIdRequest) returns (BudgetResponse);
+}
+
+service BudgetItemService {
+  rpc GetBudgetItemById(GetByIdRequest) returns (BudgetItemResponse);
+}
+
+// ========== Common Request ==========
+message GetByIdRequest {
+  string id = 1;
+}
+
+// ========== Budget ==========
+message BudgetResponse {
+  string id = 1;
+  string name = 2;
+}
+
+// ========== BudgetItem ==========
+message BudgetItemResponse {
+  string id = 1;
+}
+

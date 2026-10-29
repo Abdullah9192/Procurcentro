@@ -1,0 +1,360 @@
+_format_version: "3.0"
+_transform: true
+
+# Global CORS plugin: allows all origins, no credentials (safe public mode)
+plugins:
+  - name: cors
+    config:
+      origins:
+        - "*"
+      methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      headers:
+        - "*"
+      exposed_headers:
+        - "*"
+      credentials: false
+      max_age: 3600
+
+services:
+  - name: admin-service
+    url: http://admin-service:5001
+    routes:
+      - name: admin-route
+        paths:
+          - /api/admin
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: vendor-service
+    url: http://vendor-service:5002
+    routes:
+      - name: vendor-route
+        paths:
+          - /api/vendor
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: employee-service
+    url: http://employee-service:5003
+    routes:
+      - name: employee-route
+        paths:
+          - /api/employee
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: notification-service
+    url: http://notification-service:5004
+    routes:
+      - name: notification-route
+        paths:
+          - /api/notification
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+           # 👇 ADD THIS NEW BLOCK 👇
+      - name: notification-socket-route
+        protocols:
+          - http
+          - https
+        paths:
+          - /socket.io
+        strip_path: false
+
+  - name: budget-service
+    url: http://budget-service:5005
+    routes:
+      - name: budget-route
+        paths:
+          - /api/budget
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: requisition-service
+    url: http://requisition-service:5006
+    routes:
+      - name: requisition-route
+        paths:
+          - /api/requisition
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: organization-inventory-service
+    url: http://organization-inventory-service:5007
+    routes:
+      - name: organization-inventory-route
+        paths:
+          - /api/organization/inventory
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: approval-service
+    url: http://approval-service:5008
+    routes:
+      - name: approval-route
+        paths:
+          - /api/approval
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: quotation-service
+    url: http://quotation-service:5009
+    routes:
+      - name: quotation-route
+        paths:
+          - /api/quotation
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+  - name: order-service
+    url: http://order-service:50010
+    routes:
+      - name: order-route
+        paths:
+          - /api/order
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+  - name: invoice-service
+    url: http://invoice-service:50011
+    routes:
+      - name: invoice-route
+        paths:
+          - /api/invoice
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+  - name: acution-service
+    url: http://auction-service:50012
+    routes:
+      - name: auction-route
+        paths:
+          - /api/auction
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+  - name: reports-service
+    url: http://reports-service:50013
+    routes:
+      - name: reports-route
+        paths:
+          - /api/reports
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+  - name: audit-trails-service
+    url: http://audit-trails-service:50014
+    routes:
+      - name: audit-trails-route
+        paths:
+          - /api/audit-trails
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+  - name: backoffice-service
+    url: http://backoffice-service:50015
+    routes:
+      - name: backoffice-route
+        paths:
+          - /api/backoffice
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+  - name: contract-service
+    url: http://contract-service:50016
+    routes:
+      - name: contract-route
+        paths:
+          - /api/contract
+        strip_path: true
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+
+          
+  # gRPC Services (CORS not applicable)
+  - name: admin-service-grpc
+    url: grpc://admin-service:50051
+    routes:
+      - name: admin-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.AdminService
+
+  - name: vendor-service-grpc
+    url: grpc://vendor-service:50052
+    routes:
+      - name: vendor-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.VendorService
+
+  - name: employee-service-grpc
+    url: grpc://employee-service:50053
+    routes:
+      - name: employee-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.EmployeeService
+
+  - name: notification-service-grpc
+    url: grpc://notification-service:50054
+    routes:
+      - name: notification-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.NotificationService
+
+  - name: budget-service-grpc
+    url: grpc://budget-service:50055
+    routes:
+      - name: budget-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.BudgetService
+
+  - name: requisition-service-grpc
+    url: grpc://requisition-service:50056
+    routes:
+      - name: requisition-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.RequisitionService
+
+  - name: organization-inventory-service-grpc
+    url: grpc://organization-inventory-service:50057
+    routes:
+      - name: organization-inventory-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.OrganizationInventoryService
+
+  - name: approval-service-grpc
+    url: grpc://approval-service:50058
+    routes:
+      - name: approval-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.ApprovalService
+
+  - name: quotation-service-grpc
+    url: grpc://quotation-service:50059
+    routes:
+      - name: quotation-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.QuotationService
+
+  - name: order-service-grpc
+    url: grpc://order-service:5063
+    routes:
+      - name: order-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.OrderService
+
+  - name: invoice-service-grpc
+    url: grpc://invoice-service:5064
+    routes:
+      - name: invoice-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.InvoiceService
+  - name: auction-service-grpc
+    url: grpc://auction-service:5065
+    routes:
+      - name: auction-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.AuctionService
+  - name: reports-service-grpc
+    url: grpc://reports-service:5066
+    routes:
+      - name: reports-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.ReportsService
+  - name: audit-trails-service-grpc
+    url: grpc://audit-trails-service:5067
+    routes:
+      - name: audit-trails-grpc-route
+        protocols: ["grpc"]
+        paths:
+          - /services.AuditTrailsService

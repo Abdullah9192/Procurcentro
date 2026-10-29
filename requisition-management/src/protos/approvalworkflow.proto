@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package approvalworkflow;
+
+service ApprovalWorkFlowService {
+  rpc GetApprovalWorkFlowById (ApprovalWorkFlowRequest) returns (ApprovalWorkFlowResponse);
+}
+
+message ApprovalWorkFlowRequest {
+  string id = 1;
+}
+
+message ApprovalWorkFlowResponse {
+  string id = 1;
+  string name = 2;
+}

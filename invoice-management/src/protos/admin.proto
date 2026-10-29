@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+package admin;
+
+// =================== Services ===================
+service OrganizationService {
+  rpc GetOrganizationById(GetByIdRequest) returns (OrganizationResponse);
+}
+
+service SubsidiaryService {
+  rpc GetSubsidiaryById(GetByIdRequest) returns (SubsidiaryResponse);
+}
+
+service BranchService {
+  rpc GetBranchById(GetByIdRequest) returns (BranchResponse);
+}
+
+service DepartmentService {
+  rpc GetDepartmentById(GetByIdRequest) returns (DepartmentResponse);
+}
+
+service UserService {
+  rpc GetUserById(GetByIdRequest) returns (UserResponse);
+}
+
+service OrgCategoryService {
+  rpc GetOrgCategoryById(GetByIdRequest) returns (OrgCategoryResponse);
+}
+
+service WorkflowService {
+  rpc GetWorkflowById(GetByIdRequest) returns (WorkflowResponse);
+}
+
+service OrgCurrencyService {
+  rpc GetOrgCurrencyById(GetByIdRequest) returns (OrgCurrencyResponse);
+}
+
+service OrgSubCategoryService {
+  rpc GetOrgSubCategoryById(GetByIdRequest) returns (OrgSubCategoryResponse);
+}
+
+// ========== Common Request ==========
+message GetByIdRequest {
+  string id = 1;
+}
+
+// ========== Organization ==========
+message OrganizationResponse {
+  string id = 1;
+  string name = 2;
+  string address = 3;
+  string phone_number = 4;
+  string contact_name = 5;
+  string user_id = 6;
+}
+
+// ========== Subsidiary ==========
+message SubsidiaryResponse {
+  string id = 1;
+  string subsidiary_name = 2;
+  string organization_id = 3;
+  bool is_active = 4;
+}
+
+// ========== Branch ==========
+message BranchResponse {
+  string id = 1;
+  string branch_name = 2;
+  string subsidiary_id = 3;
+  bool is_active = 4;
+}
+
+// ========== Department ==========
+message DepartmentResponse {
+  string id = 1;
+  string department_name = 2;
+  string subsidiary_branch_id = 3;
+  bool is_active = 4;
+}
+
+// ========== User ==========
+
+
+// ========== Org Category ==========
+message OrgCategoryResponse {
+  string id = 1;
+  string category_name = 2;
+  bool is_active = 3;
+}
+
+// ========== Workflow ==========
+message WorkflowResponse {
+  string id = 1;
+  string name = 2;
+  string approval_type = 3;
+  bool is_active = 4;
+}
+// ========== Org Currency ==========
+message OrgCurrencyResponse {
+  string id = 1;
+  string currency = 2;
+  bool is_active = 3;
+}
+// ========== Org Sub Category ==========
+
+message OrgSubCategoryResponse {
+  string id = 1;
+  string name = 2;
+  bool is_active = 3;
+}
+
+//============ User Data ============
+message UserResponse {
+  string id = 1;
+  string user_id_no = 2;
+  string name = 3;
+  string email = 4;
+  string password = 5;
+  string country = 6;
+  bool is_email_verified = 7;
+  bool is_supplier_capable = 8;
+  string supplier_status = 9;
+  string supplier_status_reason = 10;
+  string supplier_approval_type = 11;
+  string google_id = 12;
+  string microsoft_id = 13;
+  bool is_owner = 14;
+  string user_type = 15;
+  string org_role_id = 16;
+  string organization_id = 17;
+  string email_verification_token = 18;
+  string email_verification_expires = 19; // Use string or google.protobuf.Timestamp
+  string reset_password_token = 20;
+  string reset_password_expires = 21;     // same as above
+  string subsidiary_branch_id = 22;
+  string branch_department_id = 23;
+  string subsidiary_id = 24;
+  bool is_head_department = 25;
+  bool onboard_completed = 26;
+  int32 stepper = 27;
+  bool is_active = 28;
+  string created_by = 29;
+  string message = 30;
+}

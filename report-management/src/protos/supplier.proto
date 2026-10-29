@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package supplier;
+
+// =================== Services ===================
+
+service SupplierService {
+  rpc GetSupplierById(GetByIdRequest) returns (SupplierResponse);
+}
+
+
+// ========== Common Request ==========
+message GetByIdRequest {
+  string id = 1;
+}
+
+
+// ========== Supplier ==========
+message SupplierResponse {
+  string id = 1;
+  string name = 2;
+  string contact_phone = 3;
+  string address = 4;
+  string contact_phone_code = 5;
+  string contact_name = 6;
+  string business_name = 7;
+  SupplierIndustry supplier_industry = 8;
+}
+
+message SupplierIndustry {
+  string id = 1;
+  string name = 2;
+}
